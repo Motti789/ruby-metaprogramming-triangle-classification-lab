@@ -8,6 +8,11 @@ class Triangle
     @height = height
     
   end
+
+  def valid_tri?
+    [base, side, height].each  {|size| if size < 0 raise TriangleError}
+  end    
+
   
   
   def kind

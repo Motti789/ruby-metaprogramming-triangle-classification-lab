@@ -1,38 +1,31 @@
 class Triangle
-  attr_reader :base, :side, :height
-  
-
-  def initialize(base, side, height)
-    @base = base
-    @side = side
-    @height = height
-    
+  attr_reader :a, :b, :c
+  def initialize(a, b, c)
+    @a = a
+    @b = b
+    @c = c
   end
 
-  def valid_tri?
-    [base, side, height].each  {|size| if size < 0 raise TriangleError}
-  end    
-
-  
-  
   def kind
-    if base == side && side == height && base == height 
+    validate_triangle
+    if a == b && b == c
       :equilateral
-    elsif base == side || side == height || base == height 
+    elsif a == b || b == c || a == c
       :isosceles
-    elsif base != side || side != height || base != height  
+    else
       :scalene
-    else 
-      base < 1 || side < 1 || height < 1
-      raise TriangleError
-    end  
+    end
   end
-   
-    
 
-   class TriangleError < StandardError
-    "This is not a triangle"
-   end
+  def validate_triangle
+    real_triangle = [(a + b > c), (a + c > b), (b + c > a)]
+    [a, b, c].each do |side|
+      real_triangle << false if side <= 0 
+    raise TriangleError if real_triangle.include?(false)
+    end
+  end
 
+  class TriangleError < StandardError
+  end
 
 end

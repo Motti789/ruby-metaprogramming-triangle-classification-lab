@@ -1,22 +1,33 @@
 class Triangle
-  attr_reader :base, :height, :side
+  attr_reader :base, :side, :height
   
 
-  def initialize(base, height, side)
+  def initialize(base, side, height)
     @base = base
-    @height = height
     @side = side
+    @height = height
+    
   end
   
   
   def kind
-   :equilateral
+    if base == side && side == height
+      :equilateral
+    elsif base == side || side == height || base == height 
+      :isosceles
+    elsif base != side || side != height || base != height
+      :scalene
+    else 
+      base || side || height < 0
+      raise TriangleError
+    end  
+  end
    
-  end  
+    
 
-  # class TriangleError < StandardError
-  #   # triangle error code
-  # end
+   class TriangleError < StandardError
+    "This is not a triangle"
+   end
 
 
 end

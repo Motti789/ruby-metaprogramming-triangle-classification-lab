@@ -1,3 +1,12 @@
 class Triangle
-  # write code here
+  
+
+  def initialize(base, height, side)
+  end
+  
+  
+  def kind(equilateral)
+  end  
+
+
 end

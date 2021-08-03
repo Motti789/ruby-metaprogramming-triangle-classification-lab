@@ -5,7 +5,8 @@ class Triangle
   end
   
   
-  def kind(equilateral)
+  def kind
+   :equilateral
   end  
 
 

@@ -11,13 +11,14 @@ class Triangle
   
   
   def kind
-    if base == side && side == height && > 0
+    if base == side && side == height && base == height 
       :equilateral
-    elsif base == side || side == height || base == height & > 0
+    elsif base == side || side == height || base == height 
       :isosceles
-    elsif base != side || side != height || base != height & > 0
+    elsif base != side || side != height || base != height  
       :scalene
     else 
+      base < 1 || side < 1 || height < 1
       raise TriangleError
     end  
   end

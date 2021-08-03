@@ -18,7 +18,6 @@ class Triangle
     elsif base != side || side != height || base != height
       :scalene
     else 
-      base || side || height < 0
       raise TriangleError
     end  
   end
